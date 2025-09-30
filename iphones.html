@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone | Tech Drop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            /* Sistema de cores Apple - Tons de Cinza */
+            --systemGray: #8E8E93;
+            --systemGray2: #AEAEB2;
+            --systemGray3: #C7C7CC;
+            --systemGray4: #D1D1D6;
+            --systemGray5: #E5E5EA;
+            --systemGray6: #F2F2F7;
+            --systemBlack: #1D1D1F;
+            --systemWhite: #FFFFFF;
+        }
+
+        body {
+            color: var(--systemBlack);
+            background-color: var(--systemWhite);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--systemWhite);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--systemGray5);
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--systemBlack);
+        }
+
+        .logo span {
+            color: var(--systemGray);
+        }
+
+        /* Desktop Navigation */
+        .nav-desktop {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--systemGray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-desktop a:hover {
+            color: var(--systemBlack);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--systemBlack);
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--systemBlack);
+            color: var(--systemWhite);
+            font-size: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--systemBlack);
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Mobile Menu */
+        .nav-mobile {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100%;
+            background-color: var(--systemWhite);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            padding: 80px 24px 24px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-mobile.active {
+            left: 0;
+        }
+
+        .nav-mobile a {
+            display: block;
+            padding: 16px 0;
+            text-decoration: none;
+            color: var(--systemBlack);
+            font-weight: 500;
+            border-bottom: 1px solid var(--systemGray5);
+        }
+
+        .nav-mobile a:last-child {
+            border-bottom: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--systemGray6);
+            padding: 150px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--systemGray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+            background-color: var(--systemWhite);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--systemBlack);
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--systemGray);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 16px 14px 44px;
+            border: 1px solid var(--systemGray4);
+            border-radius: 12px;
+            font-size: 16px;
+            background-color: var(--systemGray6);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--systemGray6);
+            color: var(--systemGray);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background-color: var(--systemBlack);
+            color: var(--systemWhite);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--systemGray6);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--systemGray5);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-color: var(--systemGray4);
+        }
+
+        .product-image {
+            position: relative;
+            height: 200px;
+            background-color: var(--systemWhite);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--systemBlack);
+            color: var(--systemWhite);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .out-of-stock {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: var(--systemGray);
+            color: var(--systemWhite);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .category-badge {
+            background-color: var(--systemGray5);
+            color: var(--systemGray);
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--systemGray);
+        }
+
+        .rating i {
+            color: #FFD700;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--systemBlack);
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: var(--systemGray);
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            padding: 0 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--systemBlack);
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: var(--systemGray);
+            text-decoration: line-through;
+        }
+
+        .add-to-cart {
+            background-color: var(--systemBlack);
+            color: var(--systemWhite);
+            border: none;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .add-to-cart:disabled {
+            background-color: var(--systemGray3);
+            cursor: not-allowed;
+        }
+
+        /* Cart Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--systemWhite);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80%;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--systemGray5);
+        }
+
+        .modal-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--systemGray);
+            cursor: pointer;
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--systemGray5);
+            align-items: center;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: var(--systemGray6);
+            padding: 8px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 500;
+            color: var(--systemBlack);
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--systemBlack);
+            font-weight: 600;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: var(--systemGray5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quantity {
+            width: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--systemGray);
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid var(--systemGray5);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #059669;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 4000;
+            font-weight: 500;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.active {
+            transform: translateX(0);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 120px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .category-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 70%;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .product-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">Tech<span>Drop</span></div>
+
+                <nav class="nav-desktop">
+                    <a href="index.html">Início</a>
+                    <a href="#">Ipad</a>
+                    <a href="#">Mac</a>
+                    <a href="#">Watch</a>
+                    <a href="#">AirPods</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="mobileMenu">
+            <a href="index.html" onclick="closeMobileMenu()">Início</a>
+            <a href="#" onclick="closeMobileMenu()">Ipad</a>
+            <a href="#" onclick="closeMobileMenu()">Mac</a>
+            <a href="#" onclick="closeMobileMenu()">Watch</a>
+            <a href="#" onclick="closeMobileMenu()">AirPods</a>
+            <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
+            <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+        </nav>
+        <div class="overlay" id="overlay" onclick="closeMobileMenu()"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Todos os Modelos iPhone</h1>
+                <p>Encontre o iPhone perfeito para você. Todos os modelos, de XR ao 15 Pro Max, com garantia e entrega
+                    rápida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Nossos iPhones</h2>
+
+            <!-- Filters -->
+            <div class="filters">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar iPhones por modelo ou capacidade..."
+                        onkeyup="filterProducts()">
+                </div>
+
+                <div class="category-filters">
+                    <button class="filter-btn active" onclick="filterByCategory('')">Todos</button>
+                    <button class="filter-btn" onclick="filterByCategory('11')">11</button>
+                    <button class="filter-btn" onclick="filterByCategory('12')">12</button>
+                    <button class="filter-btn" onclick="filterByCategory('13')">13</button>
+                    <button class="filter-btn" onclick="filterByCategory('14')">14</button>
+                    <button class="filter-btn" onclick="filterByCategory('15')">15</button>
+                    <button class="filter-btn" onclick="filterByCategory('16')">16</button>
+                    <button class="filter-btn" onclick="filterByCategory('17')">17</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Seu Carrinho</h2>
+                <button class="close-btn" onclick="toggleCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+
+                <div class="cart-empty" id="cartEmpty">
+                    <p>Seu carrinho está vazio</p>
+                </div>
+            </div>
+
+            <div class="modal-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Total: R$ <span id="cartTotal">0.00</span></span>
+                </div>
+                <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Finalizar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <button class="whatsapp-float" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <script>
+        // Products data
+        const products = [
+
+    // iPhone 11
+    {
+        id: 10,
+        name: "iPhone 11 64GB",
+        price: 4299.90,
+        originalPrice: 4799.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566956144418",
+        category: "iPhone",
+        rating: 4.8,
+        reviews: 210,
+        description: "iPhone 11 com 64 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 11,
+        name: "iPhone 11 128GB",
+        price: 4499.90,
+        originalPrice: 4999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-purple-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566960958082",
+        category: "iPhone",
+        rating: 4.8,
+        reviews: 190,
+        description: "iPhone 11 com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 12,
+        name: "iPhone 11 256GB",
+        price: 4899.90,
+        originalPrice: 5399.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566956144838",
+        category: "iPhone",
+        rating: 4.8,
+        reviews: 160,
+        description: "iPhone 11 com 256 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 11 Pro
+    {
+        id: 13,
+        name: "iPhone 11 Pro 64GB",
+        price: 5999.90,
+        originalPrice: 6499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-silver-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728080",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 180,
+        description: "iPhone 11 Pro com 64 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 14,
+        name: "iPhone 11 Pro 256GB",
+        price: 6799.90,
+        originalPrice: 7299.90,
+        image: "assets/img/11pro.jpg",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 150,
+        description: "iPhone 11 Pro com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 15,
+        name: "iPhone 11 Pro 512GB",
+        price: 7799.90,
+        originalPrice: 8299.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-midnight-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728082",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 120,
+        description: "iPhone 11 Pro com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 11 Pro Max
+    {
+        id: 16,
+        name: "iPhone 11 Pro Max 64GB",
+        price: 6499.90,
+        originalPrice: 6999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-max-gold-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728083",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 170,
+        description: "iPhone 11 Pro Max com 64 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 17,
+        name: "iPhone 11 Pro Max 256GB",
+        price: 7299.90,
+        originalPrice: 7799.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-silver-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728080",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 140,
+        description: "iPhone 11 Pro Max com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 18,
+        name: "iPhone 11 Pro Max 512GB",
+        price: 8299.90,
+        originalPrice: 8799.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-max-midnight-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728085",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 110,
+        description: "iPhone 11 Pro Max com 512 GB de armazenamento",
+        inStock: true
+    },
+    
+    // iPhone 12
+    {
+        id: 25,
+        name: "iPhone 12 64GB",
+        price: 4599.90,
+        originalPrice: 5099.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-black-select-2020?wid=940&hei=1112&fmt=png-alpha&.v=1604343702000",
+        category: "iPhone",
+        rating: 4.8,
+        reviews: 140,
+        description: "iPhone 12 com 64 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 26,
+        name: "iPhone 12 128GB",
+        price: 4799.90,
+        originalPrice: 5299.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-blue-select-2020?wid=940&hei=1112&fmt=png-alpha&.v=1604343704000",
+        category: "iPhone",
+        rating: 4.8,
+        reviews: 130,
+        description: "iPhone 12 com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 27,
+        name: "iPhone 12 256GB",
+        price: 5199.90,
+        originalPrice: 5699.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-purple-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1617130317000",
+        category: "iPhone",
+        rating: 4.8,
+        reviews: 110,
+        description: "iPhone 12 com 256 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 12 Pro
+    {
+        id: 28,
+        name: "iPhone 12 Pro 128GB",
+        price: 6299.90,
+        originalPrice: 6799.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021661000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 120,
+        description: "iPhone 12 Pro com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 29,
+        name: "iPhone 12 Pro 256GB",
+        price: 6799.90,
+        originalPrice: 7299.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021659000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 110,
+        description: "iPhone 12 Pro com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 30,
+        name: "iPhone 12 Pro 512GB",
+        price: 7799.90,
+        originalPrice: 8299.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021658000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 90,
+        description: "iPhone 12 Pro com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 12 Pro Max
+    {
+        id: 31,
+        name: "iPhone 12 Pro Max 128GB",
+        price: 6799.90,
+        originalPrice: 7299.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021662000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 120,
+        description: "iPhone 12 Pro Max com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 32,
+        name: "iPhone 12 Pro Max 256GB",
+        price: 7299.90,
+        originalPrice: 7799.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021660000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 110,
+        description: "iPhone 12 Pro Max com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 33,
+        name: "iPhone 12 Pro Max 512GB",
+        price: 8299.90,
+        originalPrice: 8799.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021661000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 90,
+        description: "iPhone 12 Pro Max com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 13
+    {
+        id: 37,
+        name: "iPhone 13 128GB",
+        price: 6499.90,
+        originalPrice: 6999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-starlight-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907843000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 210,
+        description: "iPhone 13 com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 38,
+        name: "iPhone 13 256GB",
+        price: 6999.90,
+        originalPrice: 7499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pink-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907844000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 190,
+        description: "iPhone 13 com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 39,
+        name: "iPhone 13 512GB",
+        price: 7999.90,
+        originalPrice: 8499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-blue-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907845000",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 160,
+        description: "iPhone 13 com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 13 Pro
+    {
+        id: 40,
+        name: "iPhone 13 Pro 128GB",
+        price: 8499.90,
+        originalPrice: 8999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652954000",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 200,
+        description: "iPhone 13 Pro com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 41,
+        name: "iPhone 13 Pro 256GB",
+        price: 8999.90,
+        originalPrice: 9499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652955000",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 180,
+        description: "iPhone 13 Pro com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 42,
+        name: "iPhone 13 Pro 512GB",
+        price: 9999.90,
+        originalPrice: 10499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-graphite-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652956000",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 150,
+        description: "iPhone 13 Pro com 512 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 43,
+        name: "iPhone 13 Pro 1TB",
+        price: 11999.90,
+        originalPrice: 12499.90,
+        image: "assets/img/13pro.webp",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 120,
+        description: "iPhone 13 Pro com 1 TB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 13 Pro Max
+    {
+        id: 44,
+        name: "iPhone 13 Pro Max 128GB",
+        price: 8999.90,
+        originalPrice: 9499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652956000",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 200,
+        description: "iPhone 13 Pro Max com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 45,
+        name: "iPhone 13 Pro Max 256GB",
+        price: 9499.90,
+        originalPrice: 9999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652954000",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 180,
+        description: "iPhone 13 Pro Max com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 46,
+        name: "iPhone 13 Pro Max 512GB",
+        price: 10499.90,
+        originalPrice: 10999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-graphite-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652955000",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 150,
+        description: "iPhone 13 Pro Max com 512 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 47,
+        name: "iPhone 13 Pro Max 1TB",
+        price: 12499.90,
+        originalPrice: 12999.90,
+        image: "assets/img/13pro.webp",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 120,
+        description: "iPhone 13 Pro Max com 1 TB de armazenamento",
+        inStock: true
+    },
+
+
+    // iPhone 14
+    {
+        id: 51,
+        name: "iPhone 14 128GB",
+        price: 6999.90,
+        originalPrice: 7499.90,
+        image: "assets/img/14.webp",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 180,
+        description: "iPhone 14 com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 52,
+        name: "iPhone 14 256GB",
+        price: 7499.90,
+        originalPrice: 7999.90,
+        image: "assets/img/14r.webp",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 160,
+        description: "iPhone 14 com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 53,
+        name: "iPhone 14 512GB",
+        price: 8499.90,
+        originalPrice: 8999.90,
+        image: "assets/img/14p.webp",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 140,
+        description: "iPhone 14 com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 14 Plus
+    {
+        id: 54,
+        name: "iPhone 14 Plus 128GB",
+        price: 7499.90,
+        originalPrice: 7999.90,
+        image: "assets/img/14r.webp",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 170,
+        description: "iPhone 14 Plus com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 55,
+        name: "iPhone 14 Plus 256GB",
+        price: 7999.90,
+        originalPrice: 8499.90,
+        image: "assets/img/14p.webp",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 150,
+        description: "iPhone 14 Plus com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 56,
+        name: "iPhone 14 Plus 512GB",
+        price: 8999.90,
+        originalPrice: 9499.90,
+        image: "assets/img/14.webp",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 130,
+        description: "iPhone 14 Plus com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 14 Pro
+    {
+        id: 57,
+        name: "iPhone 14 Pro 128GB",
+        price: 9999.90,
+        originalPrice: 10499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035837",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 200,
+        description: "iPhone 14 Pro com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 58,
+        name: "iPhone 14 Pro 256GB",
+        price: 10499.90,
+        originalPrice: 10999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 180,
+        description: "iPhone 14 Pro com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 59,
+        name: "iPhone 14 Pro 512GB",
+        price: 11499.90,
+        originalPrice: 11999.90,
+        image: "assets/img/14pro.webp",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 150,
+        description: "iPhone 14 Pro com 512 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 60,
+        name: "iPhone 14 Pro 1TB",
+        price: 13499.90,
+        originalPrice: 13999.90,
+        image: "assets/img/14pro.webp",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 120,
+        description: "iPhone 14 Pro com 1 TB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 14 Pro Max
+    {
+        id: 61,
+        name: "iPhone 14 Pro Max 128GB",
+        price: 10499.90,
+        originalPrice: 10999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-max-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035837",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 200,
+        description: "iPhone 14 Pro Max com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 62,
+        name: "iPhone 14 Pro Max 256GB",
+        price: 10999.90,
+        originalPrice: 11499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-max-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 180,
+        description: "iPhone 14 Pro Max com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 63,
+        name: "iPhone 14 Pro Max 512GB",
+        price: 11999.90,
+        originalPrice: 12499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 150,
+        description: "iPhone 14 Pro Max com 512 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 64,
+        name: "iPhone 14 Pro Max 1TB",
+        price: 13999.90,
+        originalPrice: 14499.90,
+        image: "assets/img/14pro.webp",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 120,
+        description: "iPhone 14 Pro Max com 1 TB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 15
+    {
+        id: 65,
+        name: "iPhone 15 128GB",
+        price: 7499.90,
+        originalPrice: 7999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-pink?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 180,
+        description: "iPhone 15 com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 66,
+        name: "iPhone 15 256GB",
+        price: 7999.90,
+        originalPrice: 8499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 160,
+        description: "iPhone 15 com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 67,
+        name: "iPhone 15 512GB",
+        price: 8999.90,
+        originalPrice: 9499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-green?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 140,
+        description: "iPhone 15 com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 15 Plus
+    {
+        id: 68,
+        name: "iPhone 15 Plus 128GB",
+        price: 7999.90,
+        originalPrice: 8499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-finish-select-202309-6-7inch-pink?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 170,
+        description: "iPhone 15 Plus com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 69,
+        name: "iPhone 15 Plus 256GB",
+        price: 8499.90,
+        originalPrice: 8999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-finish-select-202309-6-7inch-blue?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 150,
+        description: "iPhone 15 Plus com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 70,
+        name: "iPhone 15 Plus 512GB",
+        price: 9499.90,
+        originalPrice: 9999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-finish-select-202309-6-7inch-green?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
+        category: "iPhone",
+        rating: 4.9,
+        reviews: 130,
+        description: "iPhone 15 Plus com 512 GB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 15 Pro
+    {
+        id: 71,
+        name: "iPhone 15 Pro 128GB",
+        price: 9999.90,
+        originalPrice: 10499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 200,
+        description: "iPhone 15 Pro com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 72,
+        name: "iPhone 15 Pro 256GB",
+        price: 10499.90,
+        originalPrice: 10999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-bluetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 180,
+        description: "iPhone 15 Pro com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 73,
+        name: "iPhone 15 Pro 512GB",
+        price: 11499.90,
+        originalPrice: 11999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-whitetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 150,
+        description: "iPhone 15 Pro com 512 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 74,
+        name: "iPhone 15 Pro 1TB",
+        price: 13499.90,
+        originalPrice: 13999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-blacktitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 120,
+        description: "iPhone 15 Pro com 1 TB de armazenamento",
+        inStock: true
+    },
+
+    // iPhone 15 Pro Max
+    {
+        id: 75,
+        name: "iPhone 15 Pro Max 128GB",
+        price: 10499.90,
+        originalPrice: 10999.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-naturaltitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 200,
+        description: "iPhone 15 Pro Max com 128 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 76,
+        name: "iPhone 15 Pro Max 256GB",
+        price: 10999.90,
+        originalPrice: 11499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-bluetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 180,
+        description: "iPhone 15 Pro Max com 256 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 77,
+        name: "iPhone 15 Pro Max 512GB",
+        price: 11999.90,
+        originalPrice: 12499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-whitetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 150,
+        description: "iPhone 15 Pro Max com 512 GB de armazenamento",
+        inStock: true
+    },
+    {
+        id: 78,
+        name: "iPhone 15 Pro Max 1TB",
+        price: 13999.90,
+        originalPrice: 14499.90,
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-blacktitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
+        category: "iPhone",
+        rating: 5.0,
+        reviews: 120,
+        description: "iPhone 15 Pro Max com 1 TB de armazenamento",
+        inStock: true
+    }
+]; // FIM DO ARRAY - IMPORTANTE!
+
+
+
+        // Global variables
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentCategory = '';
+        let searchTerm = '';
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function () {
+            renderProducts();
+            updateCartCount();
+        });
+
+        // Render products
+        function renderProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            const filteredProducts = products.filter(product => {
+                const matchesCategory = currentCategory === '' ||
+                    product.name.toLowerCase().includes(currentCategory.toLowerCase());
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    product.description.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filteredProducts.length === 0) {
+                productsGrid.innerHTML = '<div class="no-products"><p>Nenhum iPhone encontrado.</p></div>';
+                return;
+            }
+
+            productsGrid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        ${product.originalPrice ? `
+                            <div class="discount-badge">
+                                -${Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                            </div>
+                        ` : ''}
+                        ${!product.inStock ? '<div class="out-of-stock">Esgotado</div>' : ''}
+                    </div>
+                    
+                    <div class="product-info">
+                        <div class="product-header">
+                            <span class="category-badge">${product.category}</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>${product.rating} (${product.reviews})</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                    </div>
+                    
+                    <div class="product-footer">
+                        <div class="price-info">
+                            <span class="current-price">R$ ${product.price.toFixed(2)}</span>
+                            ${product.originalPrice ? `
+                                <span class="original-price">R$ ${product.originalPrice.toFixed(2)}</span>
+                            ` : ''}
+                        </div>
+                        
+                        <button 
+                            class="add-to-cart" 
+                            onclick="addToCart(${product.id})"
+                            ${!product.inStock ? 'disabled' : ''}
+                        >
+                            ${product.inStock ? 'Adicionar' : 'Esgotado'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter products by category
+        function filterByCategory(category) {
+            currentCategory = category;
+
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            event.target.classList.add('active');
+
+            renderProducts();
+        }
+
+        // Filter products by search term
+        function filterProducts() {
+            searchTerm = document.getElementById('searchInput').value;
+            renderProducts();
+        }
+
+        // Add product to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.inStock) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartCount();
+            showNotification('iPhone adicionado ao carrinho!');
+        }
+
+        // Remove product from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            renderCartItems();
+        }
+
+        // Update product quantity in cart
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity === 0) {
+                removeFromCart(productId);
+                return;
+            }
+
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCartCount();
+                renderCartItems();
+            }
+        }
+
+        // Update cart count display
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartCount = document.getElementById('cartCount');
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Toggle cart modal
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            const isActive = modal.classList.contains('active');
+
+            if (isActive) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                renderCartItems();
+            }
+        }
+
+        // Render cart items
+        function renderCartItems() {
+            const cartItems = document.getElementById('cartItems');
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartFooter = document.getElementById('cartFooter');
+            const cartTotal = document.getElementById('cartTotal');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '';
+                cartEmpty.style.display = 'block';
+                cartFooter.style.display = 'none';
+                return;
+            }
+
+            cartEmpty.style.display = 'none';
+            cartFooter.style.display = 'block';
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">R$ ${item.price.toFixed(2)}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity - 1})">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity + 1})">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        // Send cart to WhatsApp
+        function sendToWhatsApp() {
+            if (cart.length === 0) return;
+
+            const message = `Olá! Gostaria de fazer um pedido:\n\n${cart.map(item =>
+                `${item.name} - Qtd: ${item.quantity} - R$ ${(item.price * item.quantity).toFixed(2)}`
+            ).join('\n')}\n\nTotal: R$ ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
+
+            const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Open WhatsApp
+        function openWhatsApp() {
+            const whatsappUrl = 'https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os iPhones.';
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                menuIcon.className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            menuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = '';
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.classList.add('active');
+            }, 100);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('active');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function (event) {
+            const modal = document.getElementById('cartModal');
+            if (event.target === modal) {
+                toggleCart();
+            }
+        });
+
+        // Handle escape key to close modal
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('cartModal');
+                if (modal.classList.contains('active')) {
+                    toggleCart();
+                }
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>
