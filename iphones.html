@@ -783,12 +783,13 @@
                 <div class="category-filters">
                     <button class="filter-btn active" onclick="filterByCategory('')">Todos</button>
                     <button class="filter-btn" onclick="filterByCategory('11')">11</button>
-                    <button class="filter-btn" onclick="filterByCategory('12')">12</button>
+                    <button class="filter-btn" onclick="filterByCategory('iphone 12')">12</button>
                     <button class="filter-btn" onclick="filterByCategory('13')">13</button>
                     <button class="filter-btn" onclick="filterByCategory('14')">14</button>
                     <button class="filter-btn" onclick="filterByCategory('15')">15</button>
                     <button class="filter-btn" onclick="filterByCategory('16')">16</button>
                     <button class="filter-btn" onclick="filterByCategory('17')">17</button>
+                    <button class="filter-btn" onclick="filterByCategory('Air')">Air</button>
                 </div>
             </div>
 
@@ -840,725 +841,1096 @@
         // Products data
         const products = [
 
-    // iPhone 11
-    {
-        id: 10,
-        name: "iPhone 11 64GB",
-        price: 4299.90,
-        originalPrice: 4799.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566956144418",
-        category: "iPhone",
-        rating: 4.8,
-        reviews: 210,
-        description: "iPhone 11 com 64 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 11,
-        name: "iPhone 11 128GB",
-        price: 4499.90,
-        originalPrice: 4999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-purple-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566960958082",
-        category: "iPhone",
-        rating: 4.8,
-        reviews: 190,
-        description: "iPhone 11 com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 12,
-        name: "iPhone 11 256GB",
-        price: 4899.90,
-        originalPrice: 5399.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566956144838",
-        category: "iPhone",
-        rating: 4.8,
-        reviews: 160,
-        description: "iPhone 11 com 256 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 11
+            {
+                id: 10,
+                name: "iPhone 11 64GB",
+                price: 1700,
+                originalPrice: 4799.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566956144418",
+                category: "iPhone",
+                rating: 4.8,
+                reviews: 210,
+                description: "iPhone 11 com 64 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 11,
+                name: "iPhone 11 128GB",
+                price: 1900,
+                originalPrice: 4999.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-purple-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566960958082",
+                category: "iPhone",
+                rating: 4.8,
+                reviews: 190,
+                description: "iPhone 11 com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 12,
+                name: "iPhone 11 256GB",
+                price: 2100,
+                originalPrice: 5399.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566956144838",
+                category: "iPhone",
+                rating: 4.8,
+                reviews: 160,
+                description: "iPhone 11 com 256 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 11 Pro
-    {
-        id: 13,
-        name: "iPhone 11 Pro 64GB",
-        price: 5999.90,
-        originalPrice: 6499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-silver-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728080",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 180,
-        description: "iPhone 11 Pro com 64 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 14,
-        name: "iPhone 11 Pro 256GB",
-        price: 6799.90,
-        originalPrice: 7299.90,
-        image: "assets/img/11pro.jpg",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 150,
-        description: "iPhone 11 Pro com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 15,
-        name: "iPhone 11 Pro 512GB",
-        price: 7799.90,
-        originalPrice: 8299.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-midnight-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728082",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 120,
-        description: "iPhone 11 Pro com 512 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 11 Pro
+            {
+                id: 13,
+                name: "iPhone 11 Pro 64GB",
+                price: 2250,
+                originalPrice: 6499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-silver-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728080",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 180,
+                description: "iPhone 11 Pro com 64 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 14,
+                name: "iPhone 11 Pro 256GB ",
+                price: 2100,
+                originalPrice: 7299.90,
+                image: "assets/img/11pro.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 150,
+                description: "iPhone 11 Pro com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 15,
+                name: "iPhone 11 Pro 512GB",
+                price: 2350,
+                originalPrice: 8299.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-midnight-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728082",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 120,
+                description: "iPhone 11 Pro com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 11 Pro Max
-    {
-        id: 16,
-        name: "iPhone 11 Pro Max 64GB",
-        price: 6499.90,
-        originalPrice: 6999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-max-gold-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728083",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 170,
-        description: "iPhone 11 Pro Max com 64 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 17,
-        name: "iPhone 11 Pro Max 256GB",
-        price: 7299.90,
-        originalPrice: 7799.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-silver-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728080",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 140,
-        description: "iPhone 11 Pro Max com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 18,
-        name: "iPhone 11 Pro Max 512GB",
-        price: 8299.90,
-        originalPrice: 8799.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-max-midnight-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728085",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 110,
-        description: "iPhone 11 Pro Max com 512 GB de armazenamento",
-        inStock: true
-    },
-    
-    // iPhone 12
-    {
-        id: 25,
-        name: "iPhone 12 64GB",
-        price: 4599.90,
-        originalPrice: 5099.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-black-select-2020?wid=940&hei=1112&fmt=png-alpha&.v=1604343702000",
-        category: "iPhone",
-        rating: 4.8,
-        reviews: 140,
-        description: "iPhone 12 com 64 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 26,
-        name: "iPhone 12 128GB",
-        price: 4799.90,
-        originalPrice: 5299.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-blue-select-2020?wid=940&hei=1112&fmt=png-alpha&.v=1604343704000",
-        category: "iPhone",
-        rating: 4.8,
-        reviews: 130,
-        description: "iPhone 12 com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 27,
-        name: "iPhone 12 256GB",
-        price: 5199.90,
-        originalPrice: 5699.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-purple-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1617130317000",
-        category: "iPhone",
-        rating: 4.8,
-        reviews: 110,
-        description: "iPhone 12 com 256 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 11 Pro Max
+            {
+                id: 17,
+                name: "iPhone 11 Pro Max 256GB",
+                price: 2400,
+                originalPrice: 7799.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-silver-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728080",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 140,
+                description: "iPhone 11 Pro Max com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 18,
+                name: "iPhone 11 Pro Max 512GB",
+                price: 2600,
+                originalPrice: 8799.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-max-midnight-green-select-2019?wid=940&hei=1112&fmt=png-alpha&.v=1566963728085",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 110,
+                description: "iPhone 11 Pro Max com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 12 Pro
-    {
-        id: 28,
-        name: "iPhone 12 Pro 128GB",
-        price: 6299.90,
-        originalPrice: 6799.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021661000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 120,
-        description: "iPhone 12 Pro com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 29,
-        name: "iPhone 12 Pro 256GB",
-        price: 6799.90,
-        originalPrice: 7299.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021659000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 110,
-        description: "iPhone 12 Pro com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 30,
-        name: "iPhone 12 Pro 512GB",
-        price: 7799.90,
-        originalPrice: 8299.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021658000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 90,
-        description: "iPhone 12 Pro com 512 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 12
+            {
+                id: 25,
+                name: "iPhone 12 64GB",
+                price: 1650,
+                originalPrice: 5099.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-black-select-2020?wid=940&hei=1112&fmt=png-alpha&.v=1604343702000",
+                category: "iPhone",
+                rating: 4.8,
+                reviews: 140,
+                description: "iPhone 12 com 64 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 26,
+                name: "iPhone 12 128GB",
+                price: 1920,
+                originalPrice: 5299.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-blue-select-2020?wid=940&hei=1112&fmt=png-alpha&.v=1604343704000",
+                category: "iPhone",
+                rating: 4.8,
+                reviews: 130,
+                description: "iPhone 12 com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 27,
+                name: "iPhone 12 256GB",
+                price: 2140,
+                originalPrice: 5699.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-purple-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1617130317000",
+                category: "iPhone",
+                rating: 4.8,
+                reviews: 110,
+                description: "iPhone 12 com 256 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 12 Pro Max
-    {
-        id: 31,
-        name: "iPhone 12 Pro Max 128GB",
-        price: 6799.90,
-        originalPrice: 7299.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021662000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 120,
-        description: "iPhone 12 Pro Max com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 32,
-        name: "iPhone 12 Pro Max 256GB",
-        price: 7299.90,
-        originalPrice: 7799.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021660000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 110,
-        description: "iPhone 12 Pro Max com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 33,
-        name: "iPhone 12 Pro Max 512GB",
-        price: 8299.90,
-        originalPrice: 8799.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021661000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 90,
-        description: "iPhone 12 Pro Max com 512 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 12 Pro
+            {
+                id: 28,
+                name: "iPhone 12 Pro 128GB",
+                price: 2260,
+                originalPrice: 6799.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021661000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 120,
+                description: "iPhone 12 Pro com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 29,
+                name: "iPhone 12 Pro 256GB",
+                price: 2780,
+                originalPrice: 7299.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021659000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 110,
+                description: "iPhone 12 Pro com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 30,
+                name: "iPhone 12 Pro 512GB",
+                price: 3000,
+                originalPrice: 8299.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021658000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 90,
+                description: "iPhone 12 Pro com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 13
-    {
-        id: 37,
-        name: "iPhone 13 128GB",
-        price: 6499.90,
-        originalPrice: 6999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-starlight-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907843000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 210,
-        description: "iPhone 13 com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 38,
-        name: "iPhone 13 256GB",
-        price: 6999.90,
-        originalPrice: 7499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pink-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907844000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 190,
-        description: "iPhone 13 com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 39,
-        name: "iPhone 13 512GB",
-        price: 7999.90,
-        originalPrice: 8499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-blue-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907845000",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 160,
-        description: "iPhone 13 com 512 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 12 Pro Max
+            {
+                id: 31,
+                name: "iPhone 12 Pro Max 128GB",
+                price: 2680,
+                originalPrice: 7299.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021662000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 120,
+                description: "iPhone 12 Pro Max com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 32,
+                name: "iPhone 12 Pro Max 256GB",
+                price: 2855,
+                originalPrice: 7799.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021660000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 110,
+                description: "iPhone 12 Pro Max com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 33,
+                name: "iPhone 12 Pro Max 512GB",
+                price: 3300,
+                originalPrice: 8799.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&.v=1604021661000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 90,
+                description: "iPhone 12 Pro Max com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 13 Pro
-    {
-        id: 40,
-        name: "iPhone 13 Pro 128GB",
-        price: 8499.90,
-        originalPrice: 8999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652954000",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 200,
-        description: "iPhone 13 Pro com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 41,
-        name: "iPhone 13 Pro 256GB",
-        price: 8999.90,
-        originalPrice: 9499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652955000",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 180,
-        description: "iPhone 13 Pro com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 42,
-        name: "iPhone 13 Pro 512GB",
-        price: 9999.90,
-        originalPrice: 10499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-graphite-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652956000",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 150,
-        description: "iPhone 13 Pro com 512 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 43,
-        name: "iPhone 13 Pro 1TB",
-        price: 11999.90,
-        originalPrice: 12499.90,
-        image: "assets/img/13pro.webp",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 120,
-        description: "iPhone 13 Pro com 1 TB de armazenamento",
-        inStock: true
-    },
+            // iPhone 13
+            {
+                id: 37,
+                name: "iPhone 13 128GB",
+                price: 2287,
+                originalPrice: 6999.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-starlight-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907843000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 210,
+                description: "iPhone 13 com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 38,
+                name: "iPhone 13 256GB",
+                price: 2680,
+                originalPrice: 7499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pink-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907844000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 190,
+                description: "iPhone 13 com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 39,
+                name: "iPhone 13 512GB",
+                price: 3340,
+                originalPrice: 8499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-blue-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1629907845000",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 160,
+                description: "iPhone 13 com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 13 Pro Max
-    {
-        id: 44,
-        name: "iPhone 13 Pro Max 128GB",
-        price: 8999.90,
-        originalPrice: 9499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652956000",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 200,
-        description: "iPhone 13 Pro Max com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 45,
-        name: "iPhone 13 Pro Max 256GB",
-        price: 9499.90,
-        originalPrice: 9999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652954000",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 180,
-        description: "iPhone 13 Pro Max com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 46,
-        name: "iPhone 13 Pro Max 512GB",
-        price: 10499.90,
-        originalPrice: 10999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-graphite-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652955000",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 150,
-        description: "iPhone 13 Pro Max com 512 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 47,
-        name: "iPhone 13 Pro Max 1TB",
-        price: 12499.90,
-        originalPrice: 12999.90,
-        image: "assets/img/13pro.webp",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 120,
-        description: "iPhone 13 Pro Max com 1 TB de armazenamento",
-        inStock: true
-    },
+            // iPhone 13 Pro
+            {
+                id: 40,
+                name: "iPhone 13 Pro 128GB",
+                price: 2910,
+                originalPrice: 8999.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652954000",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 13 Pro com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 41,
+                name: "iPhone 13 Pro 256GB",
+                price: 3312,
+                originalPrice: 9499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652955000",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 13 Pro com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 42,
+                name: "iPhone 13 Pro 512GB",
+                price: 3400,
+                originalPrice: 10499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-graphite-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652956000",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 13 Pro com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 43,
+                name: "iPhone 13 Pro 1TB",
+                price: 4000,
+                originalPrice: 12499.90,
+                image: "assets/img/13pro.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 13 Pro com 1 TB de armazenamento",
+                inStock: true
+            },
+
+            // iPhone 13 Pro Max
+            {
+                id: 44,
+                name: "iPhone 13 Pro Max 128GB",
+                price: 3325,
+                originalPrice: 9499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652956000",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 13 Pro Max com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 45,
+                name: "iPhone 13 Pro Max 256GB",
+                price: 3625,
+                originalPrice: 9999.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652954000",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 13 Pro Max com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 46,
+                name: "iPhone 13 Pro Max 512GB",
+                price: 3800,
+                originalPrice: 10999.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-graphite-select?wid=940&hei=1112&fmt=png-alpha&.v=1631652955000",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 13 Pro Max com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 47,
+                name: "iPhone 13 Pro Max 1TB",
+                price: 4175,
+                originalPrice: 12999.90,
+                image: "assets/img/13pro.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 13 Pro Max com 1 TB de armazenamento",
+                inStock: true
+            },
 
 
-    // iPhone 14
-    {
-        id: 51,
-        name: "iPhone 14 128GB",
-        price: 6999.90,
-        originalPrice: 7499.90,
-        image: "assets/img/14.webp",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 180,
-        description: "iPhone 14 com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 52,
-        name: "iPhone 14 256GB",
-        price: 7499.90,
-        originalPrice: 7999.90,
-        image: "assets/img/14r.webp",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 160,
-        description: "iPhone 14 com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 53,
-        name: "iPhone 14 512GB",
-        price: 8499.90,
-        originalPrice: 8999.90,
-        image: "assets/img/14p.webp",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 140,
-        description: "iPhone 14 com 512 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 14
+            {
+                id: 51,
+                name: "iPhone 14 128GB",
+                price: 6999.90,
+                originalPrice: 7499.90,
+                image: "assets/img/14.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 180,
+                description: "iPhone 14 com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 52,
+                name: "iPhone 14 256GB",
+                price: 7499.90,
+                originalPrice: 7999.90,
+                image: "assets/img/14r.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 160,
+                description: "iPhone 14 com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 53,
+                name: "iPhone 14 512GB",
+                price: 8499.90,
+                originalPrice: 8999.90,
+                image: "assets/img/14p.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 140,
+                description: "iPhone 14 com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 14 Plus
-    {
-        id: 54,
-        name: "iPhone 14 Plus 128GB",
-        price: 7499.90,
-        originalPrice: 7999.90,
-        image: "assets/img/14r.webp",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 170,
-        description: "iPhone 14 Plus com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 55,
-        name: "iPhone 14 Plus 256GB",
-        price: 7999.90,
-        originalPrice: 8499.90,
-        image: "assets/img/14p.webp",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 150,
-        description: "iPhone 14 Plus com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 56,
-        name: "iPhone 14 Plus 512GB",
-        price: 8999.90,
-        originalPrice: 9499.90,
-        image: "assets/img/14.webp",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 130,
-        description: "iPhone 14 Plus com 512 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 14 Plus
+            {
+                id: 54,
+                name: "iPhone 14 Plus 128GB",
+                price: 7499.90,
+                originalPrice: 7999.90,
+                image: "assets/img/14r.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 170,
+                description: "iPhone 14 Plus com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 55,
+                name: "iPhone 14 Plus 256GB",
+                price: 7999.90,
+                originalPrice: 8499.90,
+                image: "assets/img/14p.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 150,
+                description: "iPhone 14 Plus com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 56,
+                name: "iPhone 14 Plus 512GB",
+                price: 8999.90,
+                originalPrice: 9499.90,
+                image: "assets/img/14.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 130,
+                description: "iPhone 14 Plus com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 14 Pro
-    {
-        id: 57,
-        name: "iPhone 14 Pro 128GB",
-        price: 9999.90,
-        originalPrice: 10499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035837",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 200,
-        description: "iPhone 14 Pro com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 58,
-        name: "iPhone 14 Pro 256GB",
-        price: 10499.90,
-        originalPrice: 10999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 180,
-        description: "iPhone 14 Pro com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 59,
-        name: "iPhone 14 Pro 512GB",
-        price: 11499.90,
-        originalPrice: 11999.90,
-        image: "assets/img/14pro.webp",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 150,
-        description: "iPhone 14 Pro com 512 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 60,
-        name: "iPhone 14 Pro 1TB",
-        price: 13499.90,
-        originalPrice: 13999.90,
-        image: "assets/img/14pro.webp",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 120,
-        description: "iPhone 14 Pro com 1 TB de armazenamento",
-        inStock: true
-    },
+            // iPhone 14 Pro
+            {
+                id: 57,
+                name: "iPhone 14 Pro 128GB",
+                price: 9999.90,
+                originalPrice: 10499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035837",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 14 Pro com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 58,
+                name: "iPhone 14 Pro 256GB",
+                price: 10499.90,
+                originalPrice: 10999.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 14 Pro com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 59,
+                name: "iPhone 14 Pro 512GB",
+                price: 11499.90,
+                originalPrice: 11999.90,
+                image: "assets/img/14pro.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 14 Pro com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 60,
+                name: "iPhone 14 Pro 1TB",
+                price: 13499.90,
+                originalPrice: 13999.90,
+                image: "assets/img/14pro.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 14 Pro com 1 TB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 14 Pro Max
-    {
-        id: 61,
-        name: "iPhone 14 Pro Max 128GB",
-        price: 10499.90,
-        originalPrice: 10999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-max-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035837",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 200,
-        description: "iPhone 14 Pro Max com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 62,
-        name: "iPhone 14 Pro Max 256GB",
-        price: 10999.90,
-        originalPrice: 11499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-max-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 180,
-        description: "iPhone 14 Pro Max com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 63,
-        name: "iPhone 14 Pro Max 512GB",
-        price: 11999.90,
-        originalPrice: 12499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 150,
-        description: "iPhone 14 Pro Max com 512 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 64,
-        name: "iPhone 14 Pro Max 1TB",
-        price: 13999.90,
-        originalPrice: 14499.90,
-        image: "assets/img/14pro.webp",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 120,
-        description: "iPhone 14 Pro Max com 1 TB de armazenamento",
-        inStock: true
-    },
+            // iPhone 14 Pro Max
+            {
+                id: 61,
+                name: "iPhone 14 Pro Max 128GB",
+                price: 10499.90,
+                originalPrice: 10999.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-max-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035837",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 14 Pro Max com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 62,
+                name: "iPhone 14 Pro Max 256GB",
+                price: 10999.90,
+                originalPrice: 11499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-max-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 14 Pro Max com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 63,
+                name: "iPhone 14 Pro Max 512GB",
+                price: 11999.90,
+                originalPrice: 12499.90,
+                image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-gold-select?wid=940&hei=1112&fmt=png-alpha&.v=1660749035777",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 14 Pro Max com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 64,
+                name: "iPhone 14 Pro Max 1TB",
+                price: 13999.90,
+                originalPrice: 14499.90,
+                image: "assets/img/14pro.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 14 Pro Max com 1 TB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 15
-    {
-        id: 65,
-        name: "iPhone 15 128GB",
-        price: 7499.90,
-        originalPrice: 7999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-pink?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 180,
-        description: "iPhone 15 com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 66,
-        name: "iPhone 15 256GB",
-        price: 7999.90,
-        originalPrice: 8499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 160,
-        description: "iPhone 15 com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 67,
-        name: "iPhone 15 512GB",
-        price: 8999.90,
-        originalPrice: 9499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-green?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 140,
-        description: "iPhone 15 com 512 GB de armazenamento",
-        inStock: true
-    },
+            // iPhone 15
+            {
+                id: 65,
+                name: "iPhone 15 128GB",
+                price: 7499.90,
+                originalPrice: 7999.90,
+                image: "assets/img/15w.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 180,
+                description: "iPhone 15 com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 66,
+                name: "iPhone 15 256GB",
+                price: 7999.90,
+                originalPrice: 8499.90,
+                image: "assets/img/15r.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 160,
+                description: "iPhone 15 com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 67,
+                name: "iPhone 15 512GB",
+                price: 8999.90,
+                originalPrice: 9499.90,
+                image: "assets/img/15p.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 140,
+                description: "iPhone 15 com 512 GB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 15 Plus
-    {
-        id: 68,
-        name: "iPhone 15 Plus 128GB",
-        price: 7999.90,
-        originalPrice: 8499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-finish-select-202309-6-7inch-pink?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 170,
-        description: "iPhone 15 Plus com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 69,
-        name: "iPhone 15 Plus 256GB",
-        price: 8499.90,
-        originalPrice: 8999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-finish-select-202309-6-7inch-blue?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 150,
-        description: "iPhone 15 Plus com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 70,
-        name: "iPhone 15 Plus 512GB",
-        price: 9499.90,
-        originalPrice: 9999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-finish-select-202309-6-7inch-green?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
-        category: "iPhone",
-        rating: 4.9,
-        reviews: 130,
-        description: "iPhone 15 Plus com 512 GB de armazenamento",
-        inStock: true
-    },
 
-    // iPhone 15 Pro
-    {
-        id: 71,
-        name: "iPhone 15 Pro 128GB",
-        price: 9999.90,
-        originalPrice: 10499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 200,
-        description: "iPhone 15 Pro com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 72,
-        name: "iPhone 15 Pro 256GB",
-        price: 10499.90,
-        originalPrice: 10999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-bluetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 180,
-        description: "iPhone 15 Pro com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 73,
-        name: "iPhone 15 Pro 512GB",
-        price: 11499.90,
-        originalPrice: 11999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-whitetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 150,
-        description: "iPhone 15 Pro com 512 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 74,
-        name: "iPhone 15 Pro 1TB",
-        price: 13499.90,
-        originalPrice: 13999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-blacktitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 120,
-        description: "iPhone 15 Pro com 1 TB de armazenamento",
-        inStock: true
-    },
+            // iPhone 15 Pro
+            {
+                id: 71,
+                name: "iPhone 15 Pro 128GB",
+                price: 9999.90,
+                originalPrice: 10499.90,
+                image: "assets/img/15prow.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 15 Pro com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 72,
+                name: "iPhone 15 Pro 256GB",
+                price: 10499.90,
+                originalPrice: 10999.90,
+                image: "assets/img/15prot.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 15 Pro com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 73,
+                name: "iPhone 15 Pro 512GB",
+                price: 11499.90,
+                originalPrice: 11999.90,
+                image: "assets/img/15prop.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 15 Pro com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 74,
+                name: "iPhone 15 Pro 1TB",
+                price: 13499.90,
+                originalPrice: 13999.90,
+                image: "assets/img/15proa.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 15 Pro com 1 TB de armazenamento",
+                inStock: true
+            },
 
-    // iPhone 15 Pro Max
-    {
-        id: 75,
-        name: "iPhone 15 Pro Max 128GB",
-        price: 10499.90,
-        originalPrice: 10999.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-naturaltitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 200,
-        description: "iPhone 15 Pro Max com 128 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 76,
-        name: "iPhone 15 Pro Max 256GB",
-        price: 10999.90,
-        originalPrice: 11499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-bluetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776986",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 180,
-        description: "iPhone 15 Pro Max com 256 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 77,
-        name: "iPhone 15 Pro Max 512GB",
-        price: 11999.90,
-        originalPrice: 12499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-whitetitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923776979",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 150,
-        description: "iPhone 15 Pro Max com 512 GB de armazenamento",
-        inStock: true
-    },
-    {
-        id: 78,
-        name: "iPhone 15 Pro Max 1TB",
-        price: 13999.90,
-        originalPrice: 14499.90,
-        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-blacktitanium?wid=940&hei=1112&fmt=png-alpha&.v=1692923777236",
-        category: "iPhone",
-        rating: 5.0,
-        reviews: 120,
-        description: "iPhone 15 Pro Max com 1 TB de armazenamento",
-        inStock: true
-    }
-]; // FIM DO ARRAY - IMPORTANTE!
+            // iPhone 15 Pro Max
+            {
+                id: 75,
+                name: "iPhone 15 Pro Max 128GB",
+                price: 10499.90,
+                originalPrice: 10999.90,
+                image: "assets/img/15prow.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 15 Pro Max com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 76,
+                name: "iPhone 15 Pro Max 256GB",
+                price: 10999.90,
+                originalPrice: 11499.90,
+                image: "assets/img/15prot.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 15 Pro Max com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 77,
+                name: "iPhone 15 Pro Max 512GB",
+                price: 11999.90,
+                originalPrice: 12499.90,
+                image: "assets/img/15prop.webp",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 15 Pro Max com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 78,
+                name: "iPhone 15 Pro Max 1TB",
+                price: 13999.90,
+                originalPrice: 14499.90,
+                image: "assets/img/15proa.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 15 Pro Max com 1 TB de armazenamento",
+                inStock: true
+            },
+
+            // iPhone 16 (2024)
+            {
+                id: 79,
+                name: "iPhone 16 128GB",
+                price: 7999.90,
+                originalPrice: 8499.90,
+                image: "assets/img/16a.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 180,
+                description: "iPhone 16 com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 80,
+                name: "iPhone 16 256GB",
+                price: 8499.90,
+                originalPrice: 8999.90,
+                image: "assets/img/16p.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 160,
+                description: "iPhone 16 com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 81,
+                name: "iPhone 16 512GB",
+                price: 9499.90,
+                originalPrice: 9999.90,
+                image: "assets/img/16r.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 140,
+                description: "iPhone 16 com 512 GB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 82,
+                name: "iPhone 16 Plus 128GB",
+                price: 8499.90,
+                originalPrice: 8999.90,
+                image: "assets/img/16v.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 170,
+                description: "iPhone 16 Plus com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 83,
+                name: "iPhone 16 Plus 256GB",
+                price: 8999.90,
+                originalPrice: 9499.90,
+                image: "assets/img/16w.webp",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 150,
+                description: "iPhone 16 Plus com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 84,
+                name: "iPhone 16 Plus 512GB",
+                price: 9999.90,
+                originalPrice: 10499.90,
+                image: "assets/img/16a.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 130,
+                description: "iPhone 16 Plus com 512 GB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 85,
+                name: "iPhone 16 Pro 128GB",
+                price: 10499.90,
+                originalPrice: 10999.90,
+                image: "assets/img/16prot.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 16 Pro com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 86,
+                name: "iPhone 16 Pro 256GB",
+                price: 10999.90,
+                originalPrice: 11499.90,
+                image: "assets/img/16prog.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 16 Pro com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 87,
+                name: "iPhone 16 Pro 512GB",
+                price: 11999.90,
+                originalPrice: 12499.90,
+                image: "assets/img/16prop.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 16 Pro com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 88,
+                name: "iPhone 16 Pro 1TB",
+                price: 13999.90,
+                originalPrice: 14499.90,
+                image: "assets/img/16prow.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 16 Pro com 1 TB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 89,
+                name: "iPhone 16 Pro Max 128GB",
+                price: 10999.90,
+                originalPrice: 11499.90,
+                image: "assets/img/16prot.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 16 Pro Max com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 90,
+                name: "iPhone 16 Pro Max 256GB",
+                price: 11499.90,
+                originalPrice: 11999.90,
+                image: "assets/img/16prog.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 16 Pro Max com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 91,
+                name: "iPhone 16 Pro Max 512GB",
+                price: 12499.90,
+                originalPrice: 12999.90,
+                image: "assets/img/16prop.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 16 Pro Max com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 92,
+                name: "iPhone 16 Pro Max 1TB",
+                price: 14499.90,
+                originalPrice: 14999.90,
+                image: "assets/img/16prow.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 16 Pro Max com 1 TB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 93,
+                name: "iPhone 16e 128GB",
+                price: 7499.90,
+                originalPrice: 7999.90,
+                image: "assets/img/16ew.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 160,
+                description: "iPhone 16e com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 94,
+                name: "iPhone 16e 256GB",
+                price: 7999.90,
+                originalPrice: 8499.90,
+                image: "assets/img/16ep.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 140,
+                description: "iPhone 16e com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 95,
+                name: "iPhone 16e 512GB",
+                price: 8999.90,
+                originalPrice: 9499.90,
+                image: "assets/img/16ew.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 120,
+                description: "iPhone 16e com 512 GB de armazenamento",
+                inStock: true
+            },
+
+            // iPhone 17 (2025)
+            {
+                id: 96,
+                name: "iPhone 17 128GB",
+                price: 7999.90,
+                originalPrice: 8499.90,
+                image: "assets/img/17r.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 180,
+                description: "iPhone 17 com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 97,
+                name: "iPhone 17 256GB",
+                price: 8499.90,
+                originalPrice: 8999.90,
+                image: "assets/img/17v.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 160,
+                description: "iPhone 17 com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 98,
+                name: "iPhone 17 512GB",
+                price: 9499.90,
+                originalPrice: 9999.90,
+                image: "assets/img/17a.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 140,
+                description: "iPhone 17 com 512 GB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 99,
+                name: "iPhone 17 Plus 128GB",
+                price: 8499.90,
+                originalPrice: 8999.90,
+                image: "assets/img/17r.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 170,
+                description: "iPhone 17 Plus com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 100,
+                name: "iPhone 17 Plus 256GB",
+                price: 8999.90,
+                originalPrice: 9499.90,
+                image: "assets/img/17v.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 150,
+                description: "iPhone 17 Plus com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 101,
+                name: "iPhone 17 Plus 512GB",
+                price: 9999.90,
+                originalPrice: 10499.90,
+                image: "assets/img/17a.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 130,
+                description: "iPhone 17 Plus com 512 GB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 102,
+                name: "iPhone 17 Pro 128GB",
+                price: 10499.90,
+                originalPrice: 10999.90,
+                image: "assets/img/17proa.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 17 Pro com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 103,
+                name: "iPhone 17 Pro 256GB",
+                price: 10999.90,
+                originalPrice: 11499.90,
+                image: "assets/img/17prow.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 17 Pro com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 104,
+                name: "iPhone 17 Pro 512GB",
+                price: 11999.90,
+                originalPrice: 12499.90,
+                image: "assets/img/17prol.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 17 Pro com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 105,
+                name: "iPhone 17 Pro 1TB",
+                price: 13999.90,
+                originalPrice: 14499.90,
+                image: "assets/img/17proa.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 17 Pro com 1 TB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 106,
+                name: "iPhone 17 Pro Max 128GB",
+                price: 10999.90,
+                originalPrice: 11499.90,
+                image: "assets/img/17prow.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 200,
+                description: "iPhone 17 Pro Max com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 107,
+                name: "iPhone 17 Pro Max 256GB",
+                price: 11499.90,
+                originalPrice: 11999.90,
+                image: "assets/img/17prol.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 180,
+                description: "iPhone 17 Pro Max com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 108,
+                name: "iPhone 17 Pro Max 512GB",
+                price: 12499.90,
+                originalPrice: 12999.90,
+                image: "assets/img/17proa.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 150,
+                description: "iPhone 17 Pro Max com 512 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 109,
+                name: "iPhone 17 Pro Max 1TB",
+                price: 14499.90,
+                originalPrice: 14999.90,
+                image: "assets/img/17prow.jpg",
+                category: "iPhone",
+                rating: 5.0,
+                reviews: 120,
+                description: "iPhone 17 Pro Max com 1 TB de armazenamento",
+                inStock: true
+            },
+
+            {
+                id: 110,
+                name: "iPhone Air 128GB",
+                price: 7499.90,
+                originalPrice: 7999.90,
+                image: "assets/img/aira.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 160,
+                description: "iPhone Air com 128 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 111,
+                name: "iPhone Air 256GB",
+                price: 7999.90,
+                originalPrice: 8499.90,
+                image: "assets/img/aird.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 140,
+                description: "iPhone Air com 256 GB de armazenamento",
+                inStock: true
+            },
+            {
+                id: 112,
+                name: "iPhone Air 512GB",
+                price: 8999.90,
+                originalPrice: 9499.90,
+                image: "assets/img/airp.jpg",
+                category: "iPhone",
+                rating: 4.9,
+                reviews: 120,
+                description: "iPhone Air com 512 GB de armazenamento",
+                inStock: true
+            }
+        ]; // FIM DO ARRAY - IMPORTANTE!
 
 
 
@@ -1767,13 +2139,13 @@
                 `${item.name} - Qtd: ${item.quantity} - R$ ${(item.price * item.quantity).toFixed(2)}`
             ).join('\n')}\n\nTotal: R$ ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
 
-            const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/45988127886?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
 
         // Open WhatsApp
         function openWhatsApp() {
-            const whatsappUrl = 'https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os iPhones.';
+            const whatsappUrl = 'https://wa.me/45988127886?text=Olá! Gostaria de saber mais sobre os iPhones.';
             window.open(whatsappUrl, '_blank');
         }
 
