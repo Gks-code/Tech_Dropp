@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone | Tech Drop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            /* Sistema de cores Apple - Tons de Cinza */
+            --systemGray: #8E8E93;
+            --systemGray2: #AEAEB2;
+            --systemGray3: #C7C7CC;
+            --systemGray4: #D1D1D6;
+            --systemGray5: #E5E5EA;
+            --systemGray6: #F2F2F7;
+            --systemBlack: #1D1D1F;
+            --systemWhite: #FFFFFF;
+        }
+
+        body {
+            color: var(--systemBlack);
+            background-color: var(--systemWhite);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--systemWhite);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--systemGray5);
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--systemBlack);
+        }
+
+        .logo span {
+            color: var(--systemGray);
+        }
+
+        /* Desktop Navigation */
+        .nav-desktop {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--systemGray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-desktop a:hover {
+            color: var(--systemBlack);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--systemBlack);
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--systemBlack);
+            color: var(--systemWhite);
+            font-size: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--systemBlack);
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Mobile Menu */
+        .nav-mobile {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100%;
+            background-color: var(--systemWhite);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            padding: 80px 24px 24px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-mobile.active {
+            left: 0;
+        }
+
+        .nav-mobile a {
+            display: block;
+            padding: 16px 0;
+            text-decoration: none;
+            color: var(--systemBlack);
+            font-weight: 500;
+            border-bottom: 1px solid var(--systemGray5);
+        }
+
+        .nav-mobile a:last-child {
+            border-bottom: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--systemGray6);
+            padding: 150px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--systemGray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+            background-color: var(--systemWhite);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--systemBlack);
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--systemGray);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 16px 14px 44px;
+            border: 1px solid var(--systemGray4);
+            border-radius: 12px;
+            font-size: 16px;
+            background-color: var(--systemGray6);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--systemGray6);
+            color: var(--systemGray);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background-color: var(--systemBlack);
+            color: var(--systemWhite);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--systemGray6);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--systemGray5);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-color: var(--systemGray4);
+        }
+
+        .product-image {
+            position: relative;
+            height: 200px;
+            background-color: var(--systemWhite);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--systemBlack);
+            color: var(--systemWhite);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .out-of-stock {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: var(--systemGray);
+            color: var(--systemWhite);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .category-badge {
+            background-color: var(--systemGray5);
+            color: var(--systemGray);
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--systemGray);
+        }
+
+        .rating i {
+            color: #FFD700;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--systemBlack);
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: var(--systemGray);
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            padding: 0 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--systemBlack);
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: var(--systemGray);
+            text-decoration: line-through;
+        }
+
+        .add-to-cart {
+            background-color: var(--systemBlack);
+            color: var(--systemWhite);
+            border: none;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .add-to-cart:disabled {
+            background-color: var(--systemGray3);
+            cursor: not-allowed;
+        }
+
+        /* Cart Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--systemWhite);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80%;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--systemGray5);
+        }
+
+        .modal-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--systemGray);
+            cursor: pointer;
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--systemGray5);
+            align-items: center;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: var(--systemGray6);
+            padding: 8px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 500;
+            color: var(--systemBlack);
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--systemBlack);
+            font-weight: 600;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: var(--systemGray5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quantity {
+            width: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--systemGray);
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid var(--systemGray5);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #059669;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 4000;
+            font-weight: 500;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.active {
+            transform: translateX(0);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 120px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .category-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 70%;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .product-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">Tech<span>Drop</span></div>
+
+                <nav class="nav-desktop">
+                    <a href="index.html">Início</a>
+                    <a href="#">Ipad</a>
+                    <a href="iphones.html">Iphone</a>
+                    <a href="#">Watch</a>
+                    <a href="#">AirPods</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="mobileMenu">
+            <a href="index.html" onclick="closeMobileMenu()">Início</a>
+            <a href="#" onclick="closeMobileMenu()">Ipad</a>
+            <a href="iphones.html" onclick="closeMobileMenu()">Iphone</a>
+            <a href="#" onclick="closeMobileMenu()">Watch</a>
+            <a href="#" onclick="closeMobileMenu()">AirPods</a>
+            <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
+            <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+        </nav>
+        <div class="overlay" id="overlay" onclick="closeMobileMenu()"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Todos os Modelos iPhone</h1>
+                <p>Encontre o iPhone perfeito para você. Todos os modelos, de XR ao 15 Pro Max, com garantia e entrega
+                    rápida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Nossos iPhones</h2>
+
+            <!-- Filters -->
+            <div class="filters">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar iPhones por modelo ou capacidade..."
+                        onkeyup="filterProducts()">
+                </div>
+
+                <div class="category-filters">
+                    <button class="filter-btn active" onclick="filterByCategory('')">Todos</button>
+                    <button class="filter-btn" onclick="filterByCategory('11')">11</button>
+                    <button class="filter-btn" onclick="filterByCategory('iphone 12')">12</button>
+                    <button class="filter-btn" onclick="filterByCategory('13')">13</button>
+                    <button class="filter-btn" onclick="filterByCategory('14')">14</button>
+                    <button class="filter-btn" onclick="filterByCategory('15')">15</button>
+                    <button class="filter-btn" onclick="filterByCategory('16')">16</button>
+                    <button class="filter-btn" onclick="filterByCategory('17')">17</button>
+                    <button class="filter-btn" onclick="filterByCategory('Air')">Air</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Seu Carrinho</h2>
+                <button class="close-btn" onclick="toggleCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+
+                <div class="cart-empty" id="cartEmpty">
+                    <p>Seu carrinho está vazio</p>
+                </div>
+            </div>
+
+            <div class="modal-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Total: R$ <span id="cartTotal">0.00</span></span>
+                </div>
+                <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Finalizar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <button class="whatsapp-float" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <script>
+        // Products data
+        const products = [
+            {
+                "id": 140683,
+                "name": "MacBook Pro 13\" 2020 M1 A2338 8GB/512GB Space Gray",
+                "price": 560.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489698_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2020 M1, 8GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140684,
+                "name": "MacBook Air 13\" 2017 8GB/128GB",
+                "price": 300.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/f2ed58df-1a9b-4c22-8828-341e2710a0f0.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" 2017, 8GB RAM, 128GB SSD",
+                "inStock": true
+            },
+            {
+                "id": 140685,
+                "name": "MacBook Air 13\" 2018 8GB/128GB Space Gray",
+                "price": 400.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/14b8599c-bd78-45bc-9973-cd01994ebe5c.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" 2018 Retina, 8GB RAM, 128GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140686,
+                "name": "MacBook Air 13\" 2018 8GB/128GB Silver",
+                "price": 400.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/165b646f-8d7d-45da-aa32-ac88954eb2e1.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" 2018 Retina, 8GB RAM, 128GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140687,
+                "name": "MacBook Air 13\" 2019 8GB/128GB Gold",
+                "price": 450.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489729_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" 2019 Retina, 8GB RAM, 128GB SSD, Gold",
+                "inStock": true
+            },
+            {
+                "id": 140688,
+                "name": "MacBook Air 13\" 2019 8GB/128GB Space Gray",
+                "price": 450.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489717_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" 2019 Retina, 8GB RAM, 128GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140689,
+                "name": "MacBook Air 13\" 2019 8GB/128GB Silver",
+                "price": 450.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489717_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" 2019 Retina, 8GB RAM, 128GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140690,
+                "name": "MacBook Air Retina 13\" 2020 8GB/256GB Space Gray",
+                "price": 500.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/14b8599c-bd78-45bc-9973-cd01994ebe5c.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air Retina 13\" 2020, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140691,
+                "name": "MacBook Air Retina 13\" 2020 8GB/256GB Silver",
+                "price": 500.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/14b8599c-bd78-45bc-9973-cd01994ebe5c.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air Retina 13\" 2020, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140692,
+                "name": "MacBook Air Retina 13\" 2020 8GB/256GB Gold",
+                "price": 500.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6418/6418599_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air Retina 13\" 2020, 8GB RAM, 256GB SSD, Gold",
+                "inStock": true
+            },
+            {
+                "id": 140693,
+                "name": "MacBook Air 13\" M2 2022 8GB/256GB Midnight",
+                "price": 800.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/93d63192-c71c-4a26-8e0c-da261bf863c7.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M2 2022, 8GB RAM, 256GB SSD, Midnight",
+                "inStock": true
+            },
+            {
+                "id": 140694,
+                "name": "MacBook Air 13\" M2 2022 8GB/256GB Silver",
+                "price": 800.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/aaebd771-8937-4bed-8d54-dcf49dcb1b19.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M2 2022, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140695,
+                "name": "MacBook Air 13\" M2 2022 8GB/256GB Starlight",
+                "price": 800.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/87f372ea-8651-465b-bf81-fe3e6d8f5ea2.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M2 2022, 8GB RAM, 256GB SSD, Starlight",
+                "inStock": true
+            },
+            {
+                "id": 140696,
+                "name": "MacBook Air 13\" M2 2022 8GB/256GB Space Gray",
+                "price": 800.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/30aa714f-2ee4-4bdf-8aa2-f9b8d48168fd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M2 2022, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140697,
+                "name": "MacBook Air 15\" M2 2023 8GB/256GB Midnight",
+                "price": 900.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/76ff6ed4-f8dd-44f7-85d6-d08075fe68b2.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M2 2023, 8GB RAM, 256GB SSD, Midnight",
+                "inStock": true
+            },
+            {
+                "id": 140698,
+                "name": "MacBook Air 15\" M2 2023 8GB/256GB Silver",
+                "price": 900.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c71c7be0-7d7d-48b7-80ed-05c6d4dbfc85.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M2 2023, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140699,
+                "name": "MacBook Air 15\" M2 2023 8GB/256GB Space Gray",
+                "price": 900.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c37bb83e-269c-4799-8434-a6383edd4ddd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M2 2023, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140700,
+                "name": "MacBook Air 15\" M2 2023 8GB/256GB Starlight",
+                "price": 900.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3ba970ae-d009-4412-95ec-f76a57966f6f.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M2 2023, 8GB RAM, 256GB SSD, Starlight",
+                "inStock": true
+            },
+            {
+                "id": 140701,
+                "name": "MacBook Air 15\" M3 2024 8GB/256GB Midnight",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/76ff6ed4-f8dd-44f7-85d6-d08075fe68b2.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M3 2024, 8GB RAM, 256GB SSD, Midnight",
+                "inStock": true
+            },
+            {
+                "id": 140702,
+                "name": "MacBook Air 15\" M3 2024 8GB/256GB Silver",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c71c7be0-7d7d-48b7-80ed-05c6d4dbfc85.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M3 2024, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140703,
+                "name": "MacBook Air 15\" M3 2024 8GB/256GB Space Gray",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c37bb83e-269c-4799-8434-a6383edd4ddd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M3 2024, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140704,
+                "name": "MacBook Air 15\" M3 2024 8GB/256GB Starlight",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3ba970ae-d009-4412-95ec-f76a57966f6f.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M3 2024, 8GB RAM, 256GB SSD, Starlight",
+                "inStock": true
+            },
+            {
+                "id": 140705,
+                "name": "MacBook Air 13\" M3 2024 8GB/256GB Midnight",
+                "price": 950.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/76ff6ed4-f8dd-44f7-85d6-d08075fe68b2.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M3 2024, 8GB RAM, 256GB SSD, Midnight",
+                "inStock": true
+            },
+            {
+                "id": 140706,
+                "name": "MacBook Air 13\" M3 2024 8GB/256GB Silver",
+                "price": 950.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c71c7be0-7d7d-48b7-80ed-05c6d4dbfc85.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M3 2024, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140707,
+                "name": "MacBook Air 13\" M3 2024 8GB/256GB Space Gray",
+                "price": 950.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c37bb83e-269c-4799-8434-a6383edd4ddd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M3 2024, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140708,
+                "name": "MacBook Air 13\" M3 2024 8GB/256GB Starlight",
+                "price": 950.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3ba970ae-d009-4412-95ec-f76a57966f6f.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M3 2024, 8GB RAM, 256GB SSD, Starlight",
+                "inStock": true
+            },
+            {
+                "id": 140709,
+                "name": "MacBook Air 15\" M4 2025 8GB/256GB Midnight",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/76ff6ed4-f8dd-44f7-85d6-d08075fe68b2.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M4 2025, 8GB RAM, 256GB SSD, Midnight",
+                "inStock": true
+            },
+            {
+                "id": 140710,
+                "name": "MacBook Air 15\" M4 2025 8GB/256GB Silver",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c71c7be0-7d7d-48b7-80ed-05c6d4dbfc85.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M4 2025, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140711,
+                "name": "MacBook Air 15\" M4 2025 8GB/256GB Space Gray",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c37bb83e-269c-4799-8434-a6383edd4ddd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M4 2025, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140712,
+                "name": "MacBook Air 15\" M4 2025 8GB/256GB Starlight",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3ba970ae-d009-4412-95ec-f76a57966f6f.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 15\" M4 2025, 8GB RAM, 256GB SSD, Starlight",
+                "inStock": true
+            },
+            {
+                "id": 140713,
+                "name": "MacBook Air 13\" M4 2025 8GB/256GB Midnight",
+                "price": 1050.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/76ff6ed4-f8dd-44f7-85d6-d08075fe68b2.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M4 2025, 8GB RAM, 256GB SSD, Midnight",
+                "inStock": true
+            },
+            {
+                "id": 140714,
+                "name": "MacBook Air 13\" M4 2025 8GB/256GB Silver",
+                "price": 1050.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c71c7be0-7d7d-48b7-80ed-05c6d4dbfc85.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M4 2025, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140715,
+                "name": "MacBook Air 13\" M4 2025 8GB/256GB Space Gray",
+                "price": 1050.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/c37bb83e-269c-4799-8434-a6383edd4ddd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M4 2025, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140716,
+                "name": "MacBook Air 13\" M4 2025 8GB/256GB Starlight",
+                "price": 1050.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/3ba970ae-d009-4412-95ec-f76a57966f6f.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Air 13\" M4 2025, 8GB RAM, 256GB SSD, Starlight",
+                "inStock": true
+            },
+            {
+                "id": 140717,
+                "name": "MacBook Pro 13\" 2016 8GB/256GB Silver",
+                "price": 350.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2016, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140718,
+                "name": "MacBook Pro 13\" 2016 8GB/256GB Space Gray",
+                "price": 350.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2016, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140719,
+                "name": "MacBook Pro 15\" 2016 16GB/256GB Silver",
+                "price": 450.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2016, 16GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140720,
+                "name": "MacBook Pro 15\" 2016 16GB/256GB Space Gray",
+                "price": 450.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2016, 16GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140721,
+                "name": "MacBook Pro 13\" 2017 8GB/256GB Silver",
+                "price": 400.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2017, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140722,
+                "name": "MacBook Pro 13\" 2017 8GB/256GB Space Gray",
+                "price": 400.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2017, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140723,
+                "name": "MacBook Pro 15\" 2017 16GB/256GB Silver",
+                "price": 500.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2017, 16GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140724,
+                "name": "MacBook Pro 15\" 2017 16GB/256GB Space Gray",
+                "price": 500.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489836_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2017, 16GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140725,
+                "name": "MacBook Pro 13\" 2018 8GB/256GB Silver",
+                "price": 450.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6515/6515456_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2018, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140726,
+                "name": "MacBook Pro 13\" 2018 8GB/256GB Space Gray",
+                "price": 450.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6515/6515456_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2018, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140727,
+                "name": "MacBook Pro 15\" 2018 16GB/256GB Silver",
+                "price": 550.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6515/6515456_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2018, 16GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140728,
+                "name": "MacBook Pro 15\" 2018 16GB/256GB Space Gray",
+                "price": 550.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6515/6515456_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2018, 16GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140729,
+                "name": "MacBook Pro 13\" 2019 8GB/256GB Silver",
+                "price": 500.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5721/5721726_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2019, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140730,
+                "name": "MacBook Pro 13\" 2019 8GB/256GB Space Gray",
+                "price": 500.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5721/5721726_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2019, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140731,
+                "name": "MacBook Pro 15\" 2019 16GB/256GB Silver",
+                "price": 600.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489763_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2019, 16GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140732,
+                "name": "MacBook Pro 15\" 2019 16GB/256GB Space Gray",
+                "price": 600.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489763_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 15\" 2019, 16GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140733,
+                "name": "MacBook Pro 16\" 2019 16GB/512GB Silver",
+                "price": 700.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/601b6103-610a-4703-b12a-072ac4445804.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2019, 16GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140734,
+                "name": "MacBook Pro 16\" 2019 16GB/512GB Space Gray",
+                "price": 700.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/601b6103-610a-4703-b12a-072ac4445804.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2019, 16GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140735,
+                "name": "MacBook Pro 13\" 2020 8GB/256GB Silver",
+                "price": 550.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6489/6489698_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2020, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140736,
+                "name": "MacBook Pro 16\" 2021 16GB/512GB Silver",
+                "price": 900.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/038dae19-b714-4b43-af4e-247c0b2181c8.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2021 M1 Pro, 16GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140737,
+                "name": "MacBook Pro 16\" 2021 16GB/512GB Space Gray",
+                "price": 900.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/038dae19-b714-4b43-af4e-247c0b2181c8.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2021 M1 Pro, 16GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140738,
+                "name": "MacBook Pro 14\" 2021 16GB/512GB Silver",
+                "price": 850.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6450/6450858_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2021 M1 Pro, 16GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140739,
+                "name": "MacBook Pro 14\" 2021 16GB/512GB Space Gray",
+                "price": 850.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6450/6450858_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2021 M1 Pro, 16GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140740,
+                "name": "MacBook Pro 13\" 2022 8GB/256GB Silver",
+                "price": 800.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6382/6382795_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2022 M2, 8GB RAM, 256GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140741,
+                "name": "MacBook Pro 13\" 2022 8GB/256GB Space Gray",
+                "price": 800.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6382/6382796_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 13\" 2022 M2, 8GB RAM, 256GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140742,
+                "name": "MacBook Pro 14\" 2023 M2 16GB/512GB Silver",
+                "price": 950.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6455/6455369_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2023 M2 Pro, 16GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140743,
+                "name": "MacBook Pro 14\" 2023 M2 16GB/512GB Space Gray",
+                "price": 950.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6455/6455369_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2023 M2 Pro, 16GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140744,
+                "name": "MacBook Pro 16\" 2023 M2 16GB/512GB Silver",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6455/6455369_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2023 M2 Pro, 16GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140745,
+                "name": "MacBook Pro 16\" 2023 M2 16GB/512GB Space Gray",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6455/6455369_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2023 M2 Pro, 16GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140746,
+                "name": "MacBook Pro 14\" 2023 M3 8GB/512GB Silver",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2023 M3, 8GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140747,
+                "name": "MacBook Pro 14\" 2023 M3 8GB/512GB Space Gray",
+                "price": 1000.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2023 M3, 8GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140748,
+                "name": "MacBook Pro 16\" 2023 M3 18GB/512GB Silver",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2023 M3 Pro, 18GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140749,
+                "name": "MacBook Pro 16\" 2023 M3 18GB/512GB Space Gray",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2023 M3 Pro, 18GB RAM, 512GB SSD, Space Gray",
+                "inStock": true
+            },
+            {
+                "id": 140750,
+                "name": "MacBook Pro 14\" 2024 M4 12GB/512GB Silver",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2024 M4, 12GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140751,
+                "name": "MacBook Pro 14\" 2024 M4 12GB/512GB Space Black",
+                "price": 1100.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 14\" 2024 M4, 12GB RAM, 512GB SSD, Space Black",
+                "inStock": true
+            },
+            {
+                "id": 140752,
+                "name": "MacBook Pro 16\" 2024 M4 18GB/512GB Silver",
+                "price": 1200.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2024 M4 Pro, 18GB RAM, 512GB SSD, Silver",
+                "inStock": true
+            },
+            {
+                "id": 140753,
+                "name": "MacBook Pro 16\" 2024 M4 18GB/512GB Space Black",
+                "price": 1200.00,
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6534/6534616_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "category": "NOTEBOOK",
+                "description": "MacBook Pro 16\" 2024 M4 Pro, 18GB RAM, 512GB SSD, Space Black",
+                "inStock": true
+            }
+        ]; // FIM DO ARRAY - IMPORTANTE!
+
+
+
+        // Global variables
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentCategory = '';
+        let searchTerm = '';
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function () {
+            renderProducts();
+            updateCartCount();
+        });
+
+        // Render products
+        function renderProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            const filteredProducts = products.filter(product => {
+                const matchesCategory = currentCategory === '' ||
+                    product.name.toLowerCase().includes(currentCategory.toLowerCase());
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    product.description.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filteredProducts.length === 0) {
+                productsGrid.innerHTML = '<div class="no-products"><p>Nenhum iPhone encontrado.</p></div>';
+                return;
+            }
+
+            productsGrid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        ${product.originalPrice ? `
+                            <div class="discount-badge">
+                                -${Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                            </div>
+                        ` : ''}
+                        ${!product.inStock ? '<div class="out-of-stock">Esgotado</div>' : ''}
+                    </div>
+                    
+                    <div class="product-info">
+                        <div class="product-header">
+                            <span class="category-badge">${product.category}</span>
+                            
+                        </div>
+                        
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                    </div>
+                    
+                    <div class="product-footer">
+                        <div class="price-info">
+                            <span class="current-price">R$ ${product.price.toFixed(2)}</span>
+                            ${product.originalPrice ? `
+                                <span class="original-price">R$ ${product.originalPrice.toFixed(2)}</span>
+                            ` : ''}
+                        </div>
+                        
+                        <button 
+                            class="add-to-cart" 
+                            onclick="addToCart(${product.id})"
+                            ${!product.inStock ? 'disabled' : ''}
+                        >
+                            ${product.inStock ? 'Adicionar' : 'Esgotado'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter products by category
+        function filterByCategory(category) {
+            currentCategory = category;
+
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            event.target.classList.add('active');
+
+            renderProducts();
+        }
+
+        // Filter products by search term
+        function filterProducts() {
+            searchTerm = document.getElementById('searchInput').value;
+            renderProducts();
+        }
+
+        // Add product to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.inStock) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartCount();
+            showNotification('iPhone adicionado ao carrinho!');
+        }
+
+        // Remove product from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            renderCartItems();
+        }
+
+        // Update product quantity in cart
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity === 0) {
+                removeFromCart(productId);
+                return;
+            }
+
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCartCount();
+                renderCartItems();
+            }
+        }
+
+        // Update cart count display
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartCount = document.getElementById('cartCount');
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Toggle cart modal
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            const isActive = modal.classList.contains('active');
+
+            if (isActive) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                renderCartItems();
+            }
+        }
+
+        // Render cart items
+        function renderCartItems() {
+            const cartItems = document.getElementById('cartItems');
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartFooter = document.getElementById('cartFooter');
+            const cartTotal = document.getElementById('cartTotal');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '';
+                cartEmpty.style.display = 'block';
+                cartFooter.style.display = 'none';
+                return;
+            }
+
+            cartEmpty.style.display = 'none';
+            cartFooter.style.display = 'block';
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">R$ ${item.price.toFixed(2)}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity - 1})">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity + 1})">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        // Send cart to WhatsApp
+        function sendToWhatsApp() {
+            if (cart.length === 0) return;
+
+            const message = `Olá! Gostaria de fazer um pedido:\n\n${cart.map(item =>
+                `${item.name} - Qtd: ${item.quantity} - R$ ${(item.price * item.quantity).toFixed(2)}`
+            ).join('\n')}\n\nTotal: R$ ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
+
+            const whatsappUrl = `https://wa.me/45988127886?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Open WhatsApp
+        function openWhatsApp() {
+            const whatsappUrl = 'https://wa.me/45988127886?text=Olá! Gostaria de saber mais sobre os iPhones.';
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                menuIcon.className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            menuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = '';
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.classList.add('active');
+            }, 100);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('active');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function (event) {
+            const modal = document.getElementById('cartModal');
+            if (event.target === modal) {
+                toggleCart();
+            }
+        });
+
+        // Handle escape key to close modal
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('cartModal');
+                if (modal.classList.contains('active')) {
+                    toggleCart();
+                }
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>
